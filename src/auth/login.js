@@ -15,7 +15,8 @@ import { StyleSheet } from 'react-native'
 
 export default class Login extends React.Component {
   static navigationOptions = {
-    headerTitle: 'Login'
+    headerTitle: 'Login',
+    tabBarIcon: 'dashboard'
   }
   render() {
     return (

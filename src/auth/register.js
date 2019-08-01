@@ -13,9 +13,17 @@ import {
   Body,
   ListItem
 } from 'native-base'
-import { View, CheckBox, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import CheckBox from 'react-native-check-box'
 
 export default class Register extends Component {
+  constructor() {
+    super()
+    this.state = {
+      isChecked: false
+    }
+  }
+
   static navigationOptions = {
     headerTitle: 'Register'
   }
@@ -46,12 +54,19 @@ export default class Register extends Component {
               <Input />
             </Item>
           </Form>
-          <View style={style.checkboxLayout}>
-            <CheckBox />
-            <Text style={{ paddingTop: 5 }}>
-              I agree with all term and conditions.
-            </Text>
-          </View>
+          <ListItem style={{ borderBottomWidth: 0 }}>
+            <CheckBox
+              onClick={() =>
+                this.setState({
+                  isChecked: !this.state.isChecked
+                })
+              }
+              isChecked={this.state.isChecked}
+            />
+            <Body>
+              <Text>I agree with all term and condition s.</Text>
+            </Body>
+          </ListItem>
         </Content>
         <Footer>
           <FooterTab>
@@ -69,6 +84,7 @@ const style = StyleSheet.create({
   checkboxLayout: {
     flex: 1,
     flexDirection: 'row',
-    marginVertical: 24
+    marginVertical: 24,
+    width: '100%'
   }
 })
